@@ -13,13 +13,47 @@ let choix = {
 
 formConfig.addEventListener('submit', function(event){
     event.preventDefault();
+
     let pseudoValue = document.getElementById("pseudo").value;
     
-
+    if(choix.mode === null || choix.duree === null || choix.difficulte === null){
+        alert("Veuillez choisir toutes les options");
+        return;
+    }
     // console.log(pseudoValue);
     localStorage.setItem('pseudo',pseudoValue);
-    sectionGame.hidden = false;
+    localStorage.setItem('choix',JSON.stringify(choix));
+    
     sectionConfig.hidden = true;
+
+    let countdownSection = document.getElementById("view-countdown");
+    let countdown = document.getElementById("countdown");
+
+    countdownSection.hidden = false;
+
+let seconds = 3;
+countdown.textContent = seconds;
+
+let timerCountdown = setInterval(function() {
+    seconds--;
+
+    countdown.textContent = seconds;
+
+    if (seconds === 0) {
+        clearInterval(timerCountdown);
+
+        countdownSection.hidden = true;
+        sectionGame.hidden = false;
+    }
+}, 1000);
+
+    let timer = document.getElementById("timer");
+
+let choix2 = JSON.parse(localStorage.getItem("choix"));
+let dureeSec = choix2.duree;
+console.log(dureeSec);
+
+timer.textContent = dureeSec;
 });
 optionGroups.forEach(function(group) {
 
@@ -38,14 +72,16 @@ optionGroups.forEach(function(group) {
             let groupName = group.dataset.group;
             choix[groupName] = option.value
             // console.log(choix);
-            localStorage.setItem('Choix',JSON.stringify(choix));
             
             
         });
+
         
     });
     
 });
+
+
 // setTimeout(() => {
 //     console.log(choix);
     
