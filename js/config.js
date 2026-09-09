@@ -16,7 +16,8 @@ formConfig.addEventListener('submit', function(event){
     let pseudoValue = document.getElementById("pseudo").value;
     
 
-    console.log(pseudoValue);
+    // console.log(pseudoValue);
+    localStorage.setItem('pseudo',pseudoValue);
     sectionGame.hidden = false;
     sectionConfig.hidden = true;
 });
@@ -36,7 +37,8 @@ optionGroups.forEach(function(group) {
 
             let groupName = group.dataset.group;
             choix[groupName] = option.value
-            console.log(choix);
+            // console.log(choix);
+            localStorage.setItem('Choix',JSON.stringify(choix));
             
             
         });
@@ -48,16 +50,6 @@ optionGroups.forEach(function(group) {
 //     console.log(choix);
     
 // }, 3000);
-// let isClicked = false;
-// btnStartPartie.addEventListener('click', function(){    
-//     isClicked = true;
-//     if (isClicked === true) {
-//         sectionGame.hidden = false;
-//         sectionConfig.hidden = true;
-//     }
-// })
-
-
 
 // console.log(opt);
 
