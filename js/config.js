@@ -7,93 +7,53 @@ let optionGroups = document.querySelectorAll(".options");
 // let btnStartPartie = document.getElementById("goo");
 
 let choix = {
-    mode : null,
-    duree : null,
-    difficulte : null
+    mode: null,
+    duree: null,
+    difficulte: null
 };
-let sec = 0 ;
+let sec = 0;
 let submitted = false;
 let duree = 0;
 
 let timer = document.getElementById("timer");
 
-formConfig.addEventListener('submit', function(event){
+formConfig.addEventListener('submit', function (event) {
     event.preventDefault();
-    
-    
+
+
     let pseudoValue = document.getElementById("pseudo").value;
-    
-    if(choix.mode === null || choix.duree === null || choix.difficulte === null){
+
+    if (choix.mode === null || choix.duree === null || choix.difficulte === null) {
         alert("Veuillez choisir toutes les options");
         return;
     }
     submitted = true;
     // console.log(pseudoValue);
-    localStorage.setItem('pseudo',pseudoValue);
-    localStorage.setItem('choix',JSON.stringify(choix));
-    
+    localStorage.setItem('pseudo', pseudoValue);
+    localStorage.setItem('choix', JSON.stringify(choix));
+
     sectionConfig.hidden = true;
-    
-    let countdownSection = document.getElementById("view-countdown");
-    let countdown = document.getElementById("countdown");
-    
-    countdownSection.hidden = false;
-    
-    let seconds = 3;
-    countdown.textContent = seconds;
-    
-    let timerCountdown = setInterval(function() {
-        seconds--;
-        
-        countdown.textContent = seconds;
-        
-    if (seconds === 0) {
-        clearInterval(timerCountdown);
-        
-        countdownSection.hidden = true;
-        sectionGame.hidden = false;
-        
-        sec = dureeSec;
-        // console.log(typeof(sec));
-        // console.log(sec);
-        
-        
-        let timeOfGame = setInterval(function(){
-            sec--;
-            
-            timer.textContent = sec
-            
-            checkSubmetted();
-            if(sec === 0){
-                clearInterval(timeOfGame);
 
-        // sectionGame.hidden = true;
-        // sectionResult.hidden = false;
-    }
+    let choix2 = JSON.parse(localStorage.getItem("choix"));
+    dureeSec = Number(choix2.duree);
+    // console.log(dureeSec);
 
-},1000);
-    }
-}, 1000);
+    timer.textContent = dureeSec;
 
-
-let choix2 = JSON.parse(localStorage.getItem("choix"));
-dureeSec = Number(choix2.duree);
-// console.log(dureeSec);
-
-timer.textContent = dureeSec;
+    countDown();
 
 
 
 });
-optionGroups.forEach(function(group) {
+optionGroups.forEach(function (group) {
 
     let options = group.querySelectorAll(".option");
 
-    options.forEach(function(option) {
+    options.forEach(function (option) {
 
-        option.addEventListener("click", function() {
+        option.addEventListener("click", function () {
 
-            options.forEach(function(opt) {
+            options.forEach(function (opt) {
                 opt.classList.remove("active");
             });
 
@@ -102,11 +62,60 @@ optionGroups.forEach(function(group) {
             let groupName = group.dataset.group;
             choix[groupName] = option.value
             // console.log(choix);
-            
-            
+
+
         });
 
-        
+
     });
-    
+
 });
+
+
+function countDown() {
+    let countdownSection = document.getElementById("view-countdown");
+    let countdown = document.getElementById("countdown");
+
+    countdownSection.hidden = false;
+
+    let seconds = 3;
+    countdown.textContent = seconds;
+
+    let timerCountdown = setInterval(function () {
+        seconds--;
+
+        countdown.textContent = seconds;
+
+        if (seconds === 0) {
+            clearInterval(timerCountdown);
+
+            countdownSection.hidden = true;
+
+            showView("view-game");
+
+            score = 0;
+            gameScore.textContent = 0;
+            localStorage.setItem("score", 0);
+
+            sec = dureeSec;
+            timer.textContent = dureeSec;
+
+            let timeOfGame = setInterval(function () {
+
+                sec--;
+
+                timer.textContent = sec;
+
+                if (sec === 0) {
+
+                    clearInterval(timeOfGame);
+
+                    showView("view-results");
+
+                    checkGameFinished();
+                }
+
+            }, 1000);
+        }
+    }, 1000);
+}
