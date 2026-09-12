@@ -118,4 +118,6 @@ function countDown() {
             }, 1000);
         }
     }, 1000);
+
+    moveTarget();
 }
