@@ -1,23 +1,35 @@
 let btnStart = document.getElementById('btn-start');
-let btnHisorique = document.getElementById('btn-history');
+let homeHistory = document.getElementById("btn-history");
 let sectionHome = document.getElementById('view-home');
-let sectionConfig = document.getElementById('view-config')
+let sectionConfig = document.getElementById('view-config');
+let homeRecord = document.getElementById("home-record");
 let btnStartIsClicked = false;
 btnStart.addEventListener('click', function () {
     btnStartIsClicked = true;
     // console.log(btnStartIsClicked)
-    console.log('C clicked');
+    // console.log('C clicked');
     if (btnStartIsClicked == true) {
-    sectionConfig.hidden = false;
-    sectionHome.hidden = true;
-}
+        showView("view-config");
+        sectionHome.hidden = true;
+        localStorage.removeItem("score");
+
+        localStorage.removeItem("gameSaved");
+        
+
+    }
 });
 // console.log(btnStartIsClicked);
 
 
+homeRecord.textContent = bestScore;
 
 
-btnHisorique.addEventListener('click', function () {
-    console.log('H clicked');
 
-})
+function setupHistoryNavigation(){
+
+    homeHistory.addEventListener('click', function(){
+        showView("view-history");
+        showHistory();
+    });
+}
+setupHistoryNavigation();
