@@ -21,7 +21,13 @@ formConfig.addEventListener('submit', function (event) {
     event.preventDefault();
 
 
-    let pseudoValue = document.getElementById("pseudo").value;
+    let pseudoInput = document.getElementById("pseudo");
+    let pseudoValue = pseudoInput.value.trim();
+
+    if (pseudoValue.length < 2 || pseudoValue.length > 20) {
+        alert("Le pseudo doit contenir entre 2 et 20 caractères.");
+        return;
+    }
 
     if (choix.mode === null || choix.duree === null || choix.difficulte === null) {
         alert("Veuillez choisir toutes les options");
@@ -94,8 +100,11 @@ function countDown() {
             showView("view-game");
 
             score = 0;
+            misse = 0
             gameScore.textContent = 0;
             localStorage.setItem("score", 0);
+
+            apllyTargetSize(choix.difficulte);
 
             sec = dureeSec;
             timer.textContent = dureeSec;
