@@ -3,10 +3,23 @@ let target = document.getElementById("target");
 let gameScore = document.getElementById("score");
 
 let score = 0;
+let misse = 0;
 
 let bestScore = Number(localStorage.getItem("bestScore")) || 0;
 
 let defiTimer;
+
+let target_Size = {
+    "Facile": 80,
+    "Moyenne": 60,
+    "Difficile": 40
+}
+
+function apllyTargetSize(difficulte) {
+    let size = target_Size[difficulte] || target_Size["Moyenne"];
+    target.style.width = size + "px";
+    target.style.height = size + "px";
+}
 
 function moveTarget() {
     let maxX = gameArea.clientWidth - target.offsetWidth;
@@ -57,10 +70,14 @@ gameArea.addEventListener("click", function (event) {
     let choix2 = JSON.parse(localStorage.getItem("choix"));
 
     if (choix2.mode === "Precision" && event.target !== target) {
-        score--;
+        misse++;
 
-        gameScore.textContent = score;
-
-        localStorage.setItem("score", score);
+        localStorage.setItem("messes", misse);
     }
 });
+
+function computeAccuracy(hits, missCount) {
+    let total = hits + missCount;
+    if (total === 0) return 0;
+    return Math.round((hits / total) * 100);
+}
