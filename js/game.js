@@ -37,7 +37,7 @@ target.addEventListener("click", function () {
         localStorage.setItem("bestScore", bestScore);
     }
 
-    // moveTarget();
+    moveTarget();
 
 });
 // Mode Défi
