@@ -1,0 +1,815 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+  min-height: 100vh;
+
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  width: 700px;
+  margin: 0 auto;
+  text-align: center;
+
+  padding: 40px 20px;
+}
+
+.home-content {
+  max-width: 700px;
+}
+
+/* Subtitle */
+
+.home-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+/* Title */
+
+.home h1 {
+  font-size: 80px;
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.home h1 span {
+  display: inline-block;
+}
+
+/* Description */
+
+.home-description {
+  max-width: 550px;
+  margin: 0 auto 35px;
+
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+
+.home-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  border: none;
+  padding: 14px 28px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background: #000;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #eee;
+  color: #000;
+}
+
+/* Record */
+
+.home-record {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.home-record p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.home-record strong {
+  font-size: 40px;
+}
+
+.home-record span {
+  font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .home h1 {
+    font-size: 55px;
+  }
+
+  .home-description {
+    font-size: 16px;
+  }
+
+  .home-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   CONFIGURATION
+========================= */
+
+#view-config {
+  min-height: 100vh;
+  width: 700px;
+  margin: 0 auto;
+
+  /* justify-content: center; */
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+.config-content {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.config-content > p {
+  text-align: center;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 10px;
+}
+
+.config-content h2 {
+  text-align: center;
+
+  font-size: 42px;
+
+  margin-bottom: 35px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+#config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label,
+.form-group > p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* =========================
+   PSEUDO
+========================= */
+
+#pseudo {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: 2px solid #ddd;
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+}
+
+#pseudo:focus {
+  border-color: #000;
+}
+
+#pseudo::placeholder {
+  color: #999;
+}
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options {
+  display: flex;
+  gap: 10px;
+}
+
+.option {
+  flex: 1;
+
+  padding: 13px 15px;
+
+  border: 2px solid #ddd;
+  border-radius: 10px;
+
+  background: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* .option:hover {
+  background: #000;
+  color: white;
+  border-color: #000;
+} */
+
+/* Option sélectionnée */
+
+.option.active {
+  background: #000;
+  color: white;
+  border-color: #000;
+}
+
+/* =========================
+   START BUTTON
+========================= */
+
+#config-form .btn-primary {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #000;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+#config-form .btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  #view-config {
+    padding: 30px 20px;
+  }
+
+  .config-content h2 {
+    font-size: 32px;
+  }
+
+  .options {
+    flex-direction: column;
+  }
+
+  .option {
+    width: 100%;
+  }
+}
+
+/* =========================
+   GAME
+========================= */
+
+#view-game {
+  min-height: 100vh;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 20px;
+}
+
+.game-container {
+  width: 550px;
+  margin: 0 auto;
+  max-width: 550px;
+}
+
+/* =========================
+   HUD
+========================= */
+
+.game-hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 12px;
+
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.hud-item span {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.hud-item strong {
+  font-size: 24px;
+}
+
+/* =========================
+   GAME ARENA
+========================= */
+
+#game-arena {
+  width: 500px;
+  height: 500px;
+
+  max-width: 100%;
+  max-height: 500px;
+
+  position: relative;
+
+  margin: 0 auto;
+
+  border: 3px solid #000;
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+/* =========================
+   TARGET
+========================= */
+
+#target {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  border: none;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+
+  transition: none;
+}
+
+#target:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 550px) {
+  #view-game {
+    padding: 20px 15px;
+  }
+
+  .game-hud {
+    gap: 8px;
+  }
+
+  .hud-item {
+    padding: 10px 5px;
+  }
+
+  .hud-item strong {
+    font-size: 20px;
+  }
+
+  #game-arena {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+#view-results {
+  min-height: 100vh;
+  width: 700px;
+  margin: 0 auto;
+
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+.results-content {
+  width: 100%;
+  max-width: 650px;
+
+  text-align: center;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.results-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 10px;
+}
+
+.results-content h2 {
+  font-size: 42px;
+
+  margin-bottom: 30px;
+}
+
+/* =========================
+   FINAL SCORE
+========================= */
+
+.final-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 35px;
+}
+
+.final-score span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.final-score strong {
+  font-size: 80px;
+  line-height: 1;
+
+  margin: 10px 0;
+}
+
+.final-score small {
+  font-size: 14px;
+}
+
+/* =========================
+   STATISTICS
+========================= */
+
+.results-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 30px;
+}
+
+.result-stat {
+  padding: 18px 10px;
+
+  border: 2px solid #ddd;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.result-stat span {
+  font-size: 14px;
+}
+
+.result-stat strong {
+  font-size: 24px;
+}
+
+/* =========================
+   NEW RECORD
+========================= */
+
+.new-record {
+  font-size: 18px;
+  font-weight: 700;
+
+  margin-bottom: 25px;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.results-actions .btn {
+  min-width: 140px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  #view-results {
+    padding: 30px 20px;
+  }
+
+  .results-content h2 {
+    font-size: 32px;
+  }
+
+  .final-score strong {
+    font-size: 60px;
+  }
+
+  .results-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .results-actions {
+    flex-direction: column;
+  }
+
+  .results-actions .btn {
+    width: 100%;
+  }
+}
+
+#view-countdown {
+  min-height: 100vh;
+  background: #fff;
+  position: relative;
+}
+
+#countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  margin: 0;
+  font-size: 180px;
+  font-weight: 900;
+  color: #000;
+
+  animation: countdownPulse 1s ease-in-out;
+}
+
+@keyframes countdownPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   HISTORY
+========================= */
+
+#view-history {
+  min-height: 100vh;
+  width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.history-content {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.history-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.history-content h2 {
+  font-size: 42px;
+  margin-bottom: 35px;
+}
+
+/* =========================
+   HISTORY LIST
+========================= */
+
+#history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   HISTORY ITEM
+========================= */
+
+.history-item {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: left;
+}
+
+/* =========================
+   SCORE
+========================= */
+
+.history-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.history-score {
+  font-size: 36px;
+}
+
+.history-main span {
+  font-size: 14px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.history-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.history-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.history-info span {
+  font-size: 12px;
+  color: #777;
+}
+
+.history-info strong {
+  font-size: 14px;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.history-date {
+  display: block;
+  margin-top: 15px;
+  color: #777;
+  font-size: 12px;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.history-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.history-actions .btn {
+  min-width: 140px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  #view-history {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .history-content h2 {
+    font-size: 32px;
+  }
+
+  .history-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .history-actions {
+    flex-direction: column;
+  }
+
+  .history-actions .btn {
+    width: 100%;
+  }
+}

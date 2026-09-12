@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Click Fast!</title>
+  </head>
+  <body>
+    <main>
+      <section id="view-home" class="home">
+        <div class="home-content">
+          <p class="home-subtitle">REFLEX GAME</p>
+
+          <h1>Click <span>Fast!</span></h1>
+
+          <p class="home-description">
+            Testez vos réflexes, améliorez votre précision et essayez de battre
+            votre meilleur score.
+          </p>
+
+          <div class="home-actions">
+            <button id="btn-start" class="btn btn-primary">Commencer</button>
+
+            <button id="btn-history" class="btn btn-secondary">
+              Historique
+            </button>
+          </div>
+
+          <div class="home-record">
+            <p>Votre record</p>
+            <strong id="home-record">0</strong>
+            <span>points</span>
+          </div>
+        </div>
+      </section>
+      <section id="view-config" hidden>
+        <div class="config-content">
+          <p>PRÉPAREZ-VOUS</p>
+
+          <h2>Configuration</h2>
+
+          <form id="config-form">
+            <!-- Pseudo -->
+            <div class="form-group">
+              <label for="pseudo">Pseudo</label>
+
+              <input
+                type="text"
+                id="pseudo"
+                name="pseudo"
+                placeholder="Entrez votre pseudo"
+                minlength="2"
+                maxlength="20"
+                required
+              />
+            </div>
+
+            <!-- Mode -->
+            <div class="form-group">
+              <p>Mode de jeu</p>
+
+              <div class="options" data-group="mode">
+                <button type="button" class="option" value="Clasique">
+                  Classique
+                </button>
+                <button type="button" class="option" value="Precision">
+                  Précision
+                </button>
+                <button type="button" class="option" value="Defi">Défi</button>
+              </div>
+            </div>
+
+            <!-- Durée -->
+            <div class="form-group">
+              <p>Durée</p>
+
+              <div class="options" data-group="duree">
+                <button type="button" class="option" value="10">10s</button>
+                <button type="button" class="option" value="20">20s</button>
+                <button type="button" class="option" value="30">30s</button>
+              </div>
+            </div>
+
+            <!-- Difficulté -->
+            <div class="form-group">
+              <p>Difficulté</p>
+
+              <div class="options" data-group="difficulte">
+                <button type="button" class="option" value="Facile">
+                  Facile
+                </button>
+                <button type="button" class="option" value="Moyenne">
+                  Moyenne
+                </button>
+                <button type="button" class="option" value="Difficile">
+                  Difficile
+                </button>
+              </div>
+            </div>
+
+            <button id="goo" type="submit" class="btn btn-primary">
+              Commencer la partie
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- timer -->
+      <section id="view-countdown" hidden>
+        <h2 id="countdown">3</h2>
+      </section>
+      <!-- Vue Jeu -->
+      <section id="view-game" hidden>
+        <div class="game-container">
+          <!-- HUD -->
+          <div class="game-hud">
+            <div class="hud-item">
+              <span>Temps</span>
+              <strong id="timer">10</strong>
+            </div>
+
+            <div class="hud-item">
+              <span>Score</span>
+              <strong id="score">0</strong>
+            </div>
+
+            <div class="hud-item">
+              <span>Record</span>
+              <strong id="record">0</strong>
+            </div>
+          </div>
+
+          <!-- Arena -->
+          <div id="game-arena">
+            <div id="target-pading">
+              <button id="target" aria-label="Cible" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Vue Résultats -->
+      <section id="view-results" hidden>
+        <div class="results-content">
+          <p class="results-subtitle">PARTIE TERMINÉE</p>
+
+          <h2>Vos résultats</h2>
+
+          <!-- Score -->
+          <div class="final-score">
+            <span>Score</span>
+            <strong id="final-score">0</strong>
+            <small>points</small>
+          </div>
+
+          <!-- Statistiques -->
+          <div class="results-stats">
+            <div class="result-stat">
+              <span>Précision</span>
+              <strong id="accuracy">-</strong>
+            </div>
+
+            <div class="result-stat">
+              <span>Ratés</span>
+              <strong id="misses">-</strong>
+            </div>
+
+            <div class="result-stat">
+              <span>Record</span>
+              <strong id="result-record">0</strong>
+            </div>
+          </div>
+
+          <!-- Nouveau record -->
+          <p id="new-record" class="new-record" hidden>🏆 Nouveau record !</p>
+
+          <!-- Actions -->
+          <div class="results-actions">
+            <button id="btn-replay" class="btn btn-primary">Rejouer</button>
+
+            <button id="btn-home" class="btn btn-secondary">Accueil</button>
+
+            <button id="btn-results-history" class="btn btn-secondary">
+              Historique
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vue Historique -->
+      <section id="view-history" hidden>
+        <div class="history-content">
+          <p class="history-subtitle">VOS PARTIES</p>
+
+          <h2>Historique</h2>
+
+          <div id="history-list">
+            <!-- Exemple d'une partie -->
+            <div class="history-item">
+              <div class="history-main">
+                <strong class="history-score">25</strong>
+                <span>points</span>
+              </div>
+
+              <div class="history-info">
+                <div>
+                  <span>Pseudo</span>
+                  <strong>Abderrazak</strong>
+                </div>
+
+                <div>
+                  <span>Mode</span>
+                  <strong>Précision</strong>
+                </div>
+
+                <div>
+                  <span>Durée</span>
+                  <strong>20s</strong>
+                </div>
+
+                <div>
+                  <span>Difficulté</span>
+                  <strong>Difficile</strong>
+                </div>
+              </div>
+
+              <small class="history-date"> 11/09/2026 12:30 </small>
+            </div>
+          </div>
+
+          <div class="history-actions">
+            <button id="btn-history-home" class="btn btn-secondary">
+              Accueil
+            </button>
+
+            <button id="btn-clear-history" class="btn btn-secondary">
+              Effacer l'historique
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/navig.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/result.js"></script>
+  </body>
+</html>
